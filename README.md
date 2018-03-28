@@ -4,7 +4,7 @@
 
 ## The challange
 
-Create a page to list all pokemons
+Create a page to list all pokemons <br />
 Create a page to list details of selected pokemon
 > **API Documentation:**  [Pokeapi](https://pokeapi.co/)
 
