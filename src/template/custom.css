@@ -1,0 +1,31 @@
+.btn {
+  margin-right: 5px;
+}
+
+.markedAsDone {
+  text-decoration: line-through;
+  color: #777;
+}
+
+.tableActions {
+  width: 105px;
+}
+
+.todoForm {
+  padding-bottom: 60px;
+}
+
+.search-box {
+  display: flex;
+}
+
+.logo{
+  font-size: 24px;
+}
+.nav-brand {
+  padding: 10px 15px;
+  font-size: 17px;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
