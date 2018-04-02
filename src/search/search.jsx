@@ -10,7 +10,7 @@ export default class Search extends Component {
     super(props);
     this.state = {
       description: '',
-      list: [],
+      pokemonDetails: [],
       selectedOption: 'pokemon'
     };
 
@@ -30,18 +30,25 @@ export default class Search extends Component {
     this.setState({...this.state, selectedOption: e.target.value});
   }
   handleSearch () {
-    const builtUrl = "http://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description;
-    alert(builtUrl)
-     
-    fetch(builtUrl, { 
-        method: 'get', 
-        mode: 'no-cors',
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
+    if(this.state.selectedOption === "pokemon") {
+      fetch(builtUrl).then(function(response) {        
+        return response.json();
       })
-      .then((resp) => {
-        debugger
-          console.log(resp.name)
-        });
+      .then((response) => {
+        var pokemonResponse = {
+          name: response.name,
+          sprites: response.sprites,
+          weight: response.weight
+        }
+        this.setState({...this.state, pokemonDetails: pokemonResponse});
+        console.log(this.state.pokemonDetails)
+      })
+      .catch(function(e){
+        console.log(e);
+      });
+    }
+    
   }
 
   render () {
@@ -55,13 +62,10 @@ export default class Search extends Component {
           handleChange={this.handleChange}
           handleChangeSearchMode={this.handleChangeSearchMode}
           handleSearch={this.handleSearch}
-          handleClear={this.handleClear}
         />
         <SearchList
-          list={this.state.list}
-          handleRemove={this.handleRemove}
-          handleMarkAsDone={this.handleMarkAsDone}
-          handleMarkAsPending={this.handleMarkAsPending}
+          list={this.state}
+          handleFavorite={this.handleFavorite}
          />
       </div>
     )
