@@ -24,7 +24,7 @@ export default props => {
           var height = pokemonObject.height;
           var image1 = imagesList[0];
               return  (
-                <div className="card row">
+                <div className="card col-md-4">
                   <img className="card-img-top" data-src={image1} alt="" src={image1} data-holder-rendered="true" />
                   <div className="card-body">
                     <h5 className="card-title">{name}</h5>
@@ -77,7 +77,7 @@ export default props => {
 
 
   return (
-    <div className=" col-md-3">
+    <div className=" col-md-12">
       {renderRows()}
     </div>
   )

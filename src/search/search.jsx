@@ -4,7 +4,8 @@ import axios from 'axios'
 import PageHeader from '../template/pageHeader'
 import SearchForm from './searchForm'
 import SearchList from './searchList'
- 
+import Alert from '../template/alert'
+
 export default class Search extends Component {
   constructor (props) {
     super(props);
@@ -12,6 +13,7 @@ export default class Search extends Component {
       description: '',
       pokemonDetails: {},
       sprites: {},
+      showAlert: false,
       selectedOption: 'pokemon'
     };
 
@@ -45,7 +47,7 @@ export default class Search extends Component {
           id: response.id
         }
         this.setState({...this.state, pokemonDetails: pokemonResponse});
-        // console.log('State da caralha', this.state.pokemonDetails)
+        this.setState({...this.state, showAlert: true});
       })
       .catch(function(e){
         console.log(e);
@@ -58,6 +60,10 @@ export default class Search extends Component {
     return (
       <div>
         <PageHeader name="Busca" small="Pokemons"></PageHeader>
+        <Alert
+            showAlert={this.state.showAlert}
+            name={this.state.pokemonDetails.name}
+        />
         <SearchForm
           handleAdd={this.handleAdd}
           description={this.state.description}
