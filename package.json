@@ -11,8 +11,9 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
-    "dev" : "webpack-dev-server --progress --colors --inline --hot",
-    "start": "webpack --progress -p"
+    "dev": "webpack-dev-server --progress --colors --inline --hot",
+    "prod": "webpack --progress -p",
+    "start": "node server.js"
   },
   "devDependencies": {
     "axios": "^0.15.3",
@@ -35,5 +36,3 @@
     "webpack-dev-server": "^1.16.2"
   }
 }
-
-
