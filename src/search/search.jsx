@@ -39,6 +39,7 @@ export default class Search extends Component {
       .then((response) => {
         var pokemonResponse = {
           name: response.name,
+          id: response.id,
           sprites: response.sprites,
           weight: response.weight
         }

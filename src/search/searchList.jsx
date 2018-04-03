@@ -21,43 +21,36 @@ export default props => {
      debugger;
     console.log('ENTROU NO LOOP');
     var listaDePropriedades = Object.values(listar);
+    listaDePropriedades = listaDePropriedades.filter(function(e){return e});
     singleObj = '';
-    for (var i = 0; i < listaDePropriedades.length; i++) { 
-      debugger;
-       var art = listaDePropriedades[i];
-       var name = list.name;
-       var weight = list.weight;
-       debugger
-       if(art != null){
-        singleObj += '<tr>'+ 
-          '<td>'+name+'</td>'+
-          '<td>'+weight+'</td>'+
-          '<td><img src='+art+' alt="" /></td>'+
-        '</tr>'
+
+    return listaDePropriedades.map(todo => (
+      <tr key={todo}>
+        <td className='images'>
+          <img src={todo} alt="" />
+        </td>
+      </tr>
+    ));
+
+
+    // for (var i = 0; i < listaDePropriedades.length; i++) { 
+    //   debugger;
+    //    var art = listaDePropriedades[i];
+    //    var name = list.name;
+    //    var weight = list.weight;
+    //    debugger
+    //    if(art != null){
+    //     singleObj += '<tr>'+ 
+    //       '<td>'+name+'</td>'+
+    //       '<td>'+weight+'</td>'+
+    //       '<td><img src='+art+' alt="" /></td>'+
+    //     '</tr>'
         
-       }
-      
-         
-        // listOfObjects.push(singleObj);
-    }
-    // debugger
-    // resultObject = (singleObj);
+    //    }
+    // }
+
    }
 
-    // if(typeof listar != 'undefined'){
-    //   var art = listar.back_shiny
-    //   console.log('art', art)
-    // } 
-
-   
-    
-    // return (
-    //   <tr>
-    //     <td>{list.name}</td>
-    //     <td>{list.weight}</td>
-    //     <td><img src={art} alt="" /></td>
-    //   </tr>
-    // )
     debugger;
     if(verifyLoadedProps(singleObj)) {
       return (singleObj);
