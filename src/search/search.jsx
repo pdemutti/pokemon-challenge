@@ -10,7 +10,8 @@ export default class Search extends Component {
     super(props);
     this.state = {
       description: '',
-      pokemonDetails: [],
+      pokemonDetails: {},
+      sprites: {},
       selectedOption: 'pokemon'
     };
 
@@ -31,7 +32,7 @@ export default class Search extends Component {
   }
   handleSearch () {
     const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
-    if(this.state.selectedOption === "pokemon") {
+   
       fetch(builtUrl).then(function(response) {        
         return response.json();
       })
@@ -42,12 +43,11 @@ export default class Search extends Component {
           weight: response.weight
         }
         this.setState({...this.state, pokemonDetails: pokemonResponse});
-        console.log(this.state.pokemonDetails)
+        // console.log('State da caralha', this.state.pokemonDetails)
       })
       .catch(function(e){
         console.log(e);
       });
-    }
     
   }
 
@@ -64,7 +64,8 @@ export default class Search extends Component {
           handleSearch={this.handleSearch}
         />
         <SearchList
-          list={this.state}
+          pokemonDetails={this.state.pokemonDetails}
+          sprites={this.state.sprites}
           handleFavorite={this.handleFavorite}
          />
       </div>
