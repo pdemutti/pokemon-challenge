@@ -41,6 +41,7 @@ export default class Search extends Component {
           name: response.name,
           sprites: response.sprites,
           weight: response.weight,
+          height: response.height,
           id: response.id
         }
         this.setState({...this.state, pokemonDetails: pokemonResponse});

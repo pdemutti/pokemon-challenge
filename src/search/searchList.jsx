@@ -21,22 +21,30 @@ export default props => {
           var pokemon = pokemonObject;
           var name = pokemonObject.name;
           var weight = pokemonObject.weight;
+          var height = pokemonObject.height;
           var image1 = imagesList[0];
               return  (
-                <tr key={pokemon.id}>
-                  <td><a href="">{name}</a></td>
-                  <td>{weight}</td>
-                  <td>
-                    <img src={image1} alt="" />
-                  </td>
-                </tr>
+                <div className="card row">
+                  <img className="card-img-top" data-src={image1} alt="" src={image1} data-holder-rendered="true" />
+                  <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                  </div>
+                  <ul className="list-group list-group-flush" key={pokemon.id}>
+                    <li className="list-group-item card-subtitle mb-2 text-muted font-weight-bold">Id: {pokemon.id}</li>
+                    <li className="list-group-item card-subtitle mb-2 text-muted font-weight-bold">Peso: {weight}</li>
+                    <li className="list-group-item card-subtitle mb-2 text-muted">Altura: {height}</li>
+                  </ul>
+                  <div className="card-body">
+                    <a href="#" className="card-link">Mais sobre o {name}</a>       
+                  </div>
+                </div>                
               );        
       }
    
 
     function performarListaDeImagensPorPokemon(){
         if(verifyLoadedProps(list)){
-         
+          
           for (var i = 0; i < listaDePokemons.length; i++) { 
             console.log('ENTROU NO LOOP');  
             var pokemon = listaDePokemons[i];
@@ -70,17 +78,8 @@ export default props => {
 
 
   return (
-    <table className="table table-dark">
-      <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Peso</th>
-            <th scope="col">Imagem</th>
-          </tr>
-        </thead>
-      <tbody>
-        {renderRows()}
-      </tbody>
-    </table>
+    <div className=" col-md-3">
+      {renderRows()}
+    </div>
   )
 }

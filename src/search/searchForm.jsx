@@ -5,7 +5,7 @@ import IconButton from '../template/iconButton'
 export default props => {
   console.log(props)
   return (
-    <div role="from" className="SearchForm">
+    <div role="from" className="Form form-group">
       <Grid cols="12 9 10">
         <div className="search-mode">
           <div className="radio-inline">
@@ -16,7 +16,7 @@ export default props => {
           </div>
           <div className="radio-inline">
             <label>
-              <input type="radio" name="selectedOption" value='ability' id='ability' checked={props.selectedOption === 'ability'}  onChange={props.handleChangeSearchMode} />
+              <input type="radio" name="selectedOption" value='hability' id='hability' checked={props.selectedOption === 'hability'}  onChange={props.handleChangeSearchMode} />
               Por habilidade
             </label>
           </div>
