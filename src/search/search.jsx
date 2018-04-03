@@ -32,16 +32,16 @@ export default class Search extends Component {
   }
   handleSearch () {
     const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
-   
+    if(this.state.selectedOption === "pokemon") {
       fetch(builtUrl).then(function(response) {        
         return response.json();
       })
       .then((response) => {
         var pokemonResponse = {
           name: response.name,
-          id: response.id,
           sprites: response.sprites,
-          weight: response.weight
+          weight: response.weight,
+          id: response.id
         }
         this.setState({...this.state, pokemonDetails: pokemonResponse});
         // console.log('State da caralha', this.state.pokemonDetails)
@@ -49,6 +49,7 @@ export default class Search extends Component {
       .catch(function(e){
         console.log(e);
       });
+    }
     
   }
 
@@ -66,8 +67,6 @@ export default class Search extends Component {
         />
         <SearchList
           pokemonDetails={this.state.pokemonDetails}
-          sprites={this.state.sprites}
-          handleFavorite={this.handleFavorite}
          />
       </div>
     )
