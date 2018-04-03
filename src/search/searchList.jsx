@@ -46,7 +46,6 @@ export default props => {
         if(verifyLoadedProps(list)){
           
           for (var i = 0; i < listaDePokemons.length; i++) { 
-            console.log('ENTROU NO LOOP');  
             var pokemon = listaDePokemons[i];
             var name = pokemon.name;
             var weight = pokemon.weight;

@@ -57,7 +57,7 @@ export default class Search extends Component {
   render () {
     return (
       <div>
-        <PageHeader name="Busca" small="pokemons"></PageHeader>
+        <PageHeader name="Busca" small="Pokemons"></PageHeader>
         <SearchForm
           handleAdd={this.handleAdd}
           description={this.state.description}
