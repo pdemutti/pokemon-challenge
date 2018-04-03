@@ -17,13 +17,13 @@ export default props => {
           <div className="radio-inline">
             <label>
               <input type="radio" name="selectedOption" value='hability' id='hability' checked={props.selectedOption === 'hability'}  onChange={props.handleChangeSearchMode} />
-              Por habilidade
+              Habilidade
             </label>
           </div>
           <div className="radio-inline">
             <label>
               <input type="radio" name="selectedOption" value='type' id="type" checked={props.selectedOption === 'type'}  onChange={props.handleChangeSearchMode} />
-              Por Tipo
+              Tipo
             </label>
           </div> 
         </div>
@@ -31,7 +31,7 @@ export default props => {
           <input
             id="description"
             className="form-control"
-            placeholder=".:: Busque seu Pokemon ::."
+            placeholder={".:: Search by " + props.selectedOption + " ::."}
             value={props.description}
             onChange={props.handleChange} />
             <IconButton
