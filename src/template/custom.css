@@ -76,3 +76,29 @@ body {
 .project {
   font-size: 16px;
 }
+
+.navbar-inverse {
+  background-color: #3156AC;
+  border-color: #3156AC;
+  color: #fff;
+
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #989ac7;
+}
+.navbar-brand {
+  padding: 8px 12px;
+  display: flex;
+}   
+.navbar-brand img {
+  width: 35px;
+  opacity: 0.4;
+}
+.navbar-brand img:hover {
+  width: 37px;
+  opacity: 1;
+  height: 37px;
+}
+.navbar-right {
+  margin-right: 12px;
+}

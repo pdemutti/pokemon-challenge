@@ -1,17 +1,20 @@
 import React from 'react';
+import logo from '../main/logo.svg';
 
 export default props => (
-  <nav className='navbar navbar-inverse bg-inverse'>
+  <nav className='navbar navbar-inverse bg-inverse '>
     <div className="container">
       <div className="navbar-header">
-        <a className="navbar-brand" href="#"> Pokedex
+        <a className="navbar-brand" href="#"> 
+          <img src={logo} className="App-logo" alt="logo" title="Pokedex" />
+          {/* <span>Pokedex</span> */}
         </a>
       </div>
 
-      <div id="navbar" className="navbar-collapse collapse">
+      <div id="navbar" className="navbar-right navbar-collapse collapse">
         <ul className="nav navbar-nav">
-          <li><a href="#/search">Busca Pokemon <i class="fa fa-search"></i></a></li>
-          <li><a href="#/about">Projeto <i class="project fa fa-github"></i></a></li>
+          <li><a href="#/search">Busca Pokemon <i className="fa fa-search"></i></a></li>
+          <li><a href="#/about">Projeto <i className="project fa fa-github"></i></a></li>
         </ul>
       </div>
     </div>
