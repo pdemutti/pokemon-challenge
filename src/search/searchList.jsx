@@ -1,5 +1,6 @@
 import React from 'react'
 import IconButton from '../template/iconButton'
+import Loading from '../template/loading'
 
 export default props => {
 

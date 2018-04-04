@@ -5,6 +5,7 @@ import PageHeader from '../template/pageHeader'
 import SearchForm from './searchForm'
 import SearchList from './searchList'
 import Alert from '../template/alert'
+import Loading from '../template/loading';
 
 export default class Search extends Component {
   constructor (props) {
@@ -14,6 +15,7 @@ export default class Search extends Component {
       pokemonDetails: {},
       sprites: {},
       showAlert: false,
+      showLoading: false,
       selectedOption: 'pokemon'
     };
 
@@ -35,10 +37,13 @@ export default class Search extends Component {
   handleSearch () {
     const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
     if(this.state.selectedOption === "pokemon") {
-      fetch(builtUrl).then(function(response) {        
+      this.setState({...this.state, showLoading: true});
+      fetch(builtUrl).then(function(response) {       
         return response.json();
       })
       .then((response) => {
+        this.setState({...this.state, showLoading: false});
+
         var pokemonResponse = {
           name: response.name,
           sprites: response.sprites,
@@ -75,6 +80,8 @@ export default class Search extends Component {
         <SearchList
           pokemonDetails={this.state.pokemonDetails}
          />
+                 <Loading showLoading={this.state.showLoading}/>
+
       </div>
     )
   }
