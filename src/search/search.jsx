@@ -15,6 +15,8 @@ export default class Search extends Component {
       pokemonDetails: {},
       sprites: {},
       showAlert: false,
+      alertTxt: '',
+      alertType: 'success',
       showLoading: false,
       selectedOption: 'pokemon'
     };
@@ -42,20 +44,39 @@ export default class Search extends Component {
         return response.json();
       })
       .then((response) => {
-        this.setState({...this.state, showLoading: false});
+        this.setState({...this.state, showLoading: false}); 
+        
+        if (response.detail !== "Not found.") {
 
-        var pokemonResponse = {
-          name: response.name,
-          sprites: response.sprites,
-          weight: response.weight,
-          height: response.height,
-          id: response.id
+          var pokemonResponse = {
+            name: response.name,
+            sprites: response.sprites,
+            weight: response.weight,
+            height: response.height,
+            id: response.id
+          }
+
+          this.setState({...this.state, pokemonDetails: pokemonResponse});
+          this.setState({...this.state, showAlert: true});
+          this.setState({...this.state, alertTxt: 'Sua pesquisa retornou o pokemon '+ this.state.pokemonDetails.name});
+          this.setState({...this.state, alertType: 'success'});
+          
+        } else {
+          this.setState({...this.state, alertTxt: 'Erro, tente novamente'});
+          this.setState({...this.state, alertType: 'danger'});
+          this.setState({...this.state, showAlert: true});
+          this.setState({...this.state, pokemonDetails: {}});
+
+          return Promise.reject(error)
         }
-        this.setState({...this.state, pokemonDetails: pokemonResponse});
-        this.setState({...this.state, showAlert: true});
+        
+
       })
       .catch(function(e){
-        console.log(e);
+        this.setState({...this.state, alertTxt: 'Erro, tente novamente'});
+        this.setState({...this.state, alertType: 'danger'});
+        this.setState({...this.state, showAlert: true});
+        return Promise.reject(error)
       });
     }
     
@@ -68,6 +89,8 @@ export default class Search extends Component {
         <Alert
             showAlert={this.state.showAlert}
             name={this.state.pokemonDetails.name}
+            txt={this.state.alertTxt}
+            type={this.state.alertType}
         />
         <SearchForm
           handleAdd={this.handleAdd}
@@ -80,8 +103,7 @@ export default class Search extends Component {
         <SearchList
           pokemonDetails={this.state.pokemonDetails}
          />
-                 <Loading showLoading={this.state.showLoading}/>
-
+        <Loading showLoading={this.state.showLoading}/>
       </div>
     )
   }

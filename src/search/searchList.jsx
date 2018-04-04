@@ -13,7 +13,7 @@ export default props => {
     const imagesObject = pokemonObject.sprites;
     console.log('listar', pokemonObject);
 
-      if(verifyLoadedProps(pokemonObject)){
+      if(verifyLoadedProps(pokemonObject && imagesObject)){
         console.log('VERIFICADO')
         
         var imagesList = Object.values(imagesObject);
