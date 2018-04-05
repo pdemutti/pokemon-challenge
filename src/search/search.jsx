@@ -12,7 +12,9 @@ export default class Search extends Component {
     super(props);
     this.state = {
       description: '',
-      pokemonDetails: {},
+      pokemonDetails: {
+        list: []
+      },
       sprites: {},
       showAlert: false,
       alertTxt: '',
@@ -26,9 +28,7 @@ export default class Search extends Component {
     this.handleChangeSearchMode = this.handleChangeSearchMode.bind(this);
     
   }
-  componentDidUpdate () {
-    // alert(document.querySelector('input[name=selectedOption]:checked'));
-  }
+
 
   handleChange (e) {
     this.setState({...this.state, description: e.target.value});
@@ -36,50 +36,59 @@ export default class Search extends Component {
   handleChangeSearchMode (e) {
     this.setState({...this.state, selectedOption: e.target.value});
   }
-  handleSearch () {
-    const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
-    if(this.state.selectedOption === "pokemon") {
-      this.setState({...this.state, showLoading: true});
-      fetch(builtUrl).then(function(response) {       
-        return response.json();
-      })
-      .then((response) => {
-        this.setState({...this.state, showLoading: false}); 
-        
-        if (response.detail !== "Not found.") {
-
-          var pokemonResponse = {
+  retrieveData (builtUrl) {
+    
+    fetch(builtUrl).then(function(response) {  
+      return response.json();
+    })
+    .then((response) => {
+      this.setState({...this.state, showLoading: false}); 
+      var listaDePokemons = {
+        name: response.name,
+        sprites: response.sprites,
+        weight: response.weight,
+        height: response.height,
+        id: response.id
+      }
+      if (response.detail !== "Not found.") {
+     
+        if(this.state.selectedOption === "pokemon") {
+          var listaDePokemons = {
             name: response.name,
             sprites: response.sprites,
             weight: response.weight,
             height: response.height,
             id: response.id
           }
-
-          this.setState({...this.state, pokemonDetails: pokemonResponse});
-          this.setState({...this.state, showAlert: true});
+          this.setState({...this.state, pokemonDetails: listaDePokemons});
           this.setState({...this.state, alertTxt: 'Sua pesquisa retornou o pokemon '+ this.state.pokemonDetails.name});
-          this.setState({...this.state, alertType: 'success'});
+
+        } else if(this.state.selectedOption === "ability") {
           
-        } else {
-          this.setState({...this.state, alertTxt: 'Erro, tente novamente'});
-          this.setState({...this.state, alertType: 'danger'});
-          this.setState({...this.state, showAlert: true});
-          this.setState({...this.state, pokemonDetails: {}});
-
-          return Promise.reject(error)
+          var listaDePokemons = {
+            name: response.name,
+            list: response.pokemon
+          }
+          this.setState({...this.state, pokemonDetails: listaDePokemons});
+          this.setState({...this.state, alertTxt: 'Você pesquisou pela Habilidade '+ this.state.pokemonDetails.name});
         }
+        this.setState({...this.state, showAlert: true});
+        this.setState({...this.state, alertType: 'success'});
         
-
-      })
-      .catch(function(e){
+      } else {
         this.setState({...this.state, alertTxt: 'Erro, tente novamente'});
         this.setState({...this.state, alertType: 'danger'});
         this.setState({...this.state, showAlert: true});
-        return Promise.reject(error)
-      });
-    }
-    
+        this.setState({...this.state, pokemonDetails: {}});
+      }
+    })
+  }
+
+  handleSearch () {
+    const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
+    this.setState({...this.state, showLoading: true});
+    this.retrieveData(builtUrl);
+
   }
 
   render () {
@@ -102,6 +111,7 @@ export default class Search extends Component {
         />
         <SearchList
           pokemonDetails={this.state.pokemonDetails}
+          selectedOption={this.state.selectedOption}
          />
         <Loading showLoading={this.state.showLoading}/>
       </div>

@@ -84,7 +84,8 @@ body {
   border-color: #678de4;
 }
 .navbar-inverse .navbar-nav>li>a {
-    color: #2d3184;
+  font-weight: 600;
+  color: #355cb7;
 }
 .navbar-brand {
   padding: 8px 12px;

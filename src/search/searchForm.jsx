@@ -16,16 +16,10 @@ export default props => {
           </div>
           <div className="radio-inline">
             <label>
-              <input type="radio" name="selectedOption" value='hability' id='hability' checked={props.selectedOption === 'hability'}  onChange={props.handleChangeSearchMode} />
+              <input type="radio" name="selectedOption" value='ability' id='ability' checked={props.selectedOption === 'ability'}  onChange={props.handleChangeSearchMode} />
               Habilidade
             </label>
           </div>
-          <div className="radio-inline">
-            <label>
-              <input type="radio" name="selectedOption" value='type' id="type" checked={props.selectedOption === 'type'}  onChange={props.handleChangeSearchMode} />
-              Tipo
-            </label>
-          </div> 
         </div>
         <div className="search-box">
           <input

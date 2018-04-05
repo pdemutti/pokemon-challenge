@@ -1,14 +1,39 @@
 import React from 'react'
 import IconButton from '../template/iconButton'
 import Loading from '../template/loading'
+import If from '../template/if'
 
 export default props => {
 
-  function verifyLoadedProps (data) {
-    return typeof data != 'undefined' && Object.keys(data).length !== 0
-  } 
+  const buscar = () => {
+    if(props.selectedOption === "pokemon") {
+      return buscaPorIdOuNome();
+    } else if(props.selectedOption === "ability") {
+      return (
+        <ul className="list-group">
+          {buscaEmLista()}
+        </ul>
+      )
+    } else {
+      buscaEmLista()
+    }
+  }
+  const buscaEmLista = () => {
+    const list = props.pokemonDetails.list || []
+    
+    console.log('lista', list)
+    console.log(props)
 
-  const renderRows = () => {
+      return list.map(item => (
+        <li className="list-group-item" key={item.pokemon.name}>
+          <a href="#/">{item.pokemon.name}</a>
+        </li>
+      )
+      );
+  }
+    
+  
+  const buscaPorIdOuNome = () => {
     const pokemonObject = props.pokemonDetails || {} 
     const imagesObject = pokemonObject.sprites;
     console.log('listar', pokemonObject);
@@ -42,44 +67,16 @@ export default props => {
               );        
       }
    
-
-    function performarListaDeImagensPorPokemon(){
-        if(verifyLoadedProps(list)){
-          
-          for (var i = 0; i < listaDePokemons.length; i++) { 
-            var pokemon = listaDePokemons[i];
-            var name = pokemon.name;
-            var weight = pokemon.weight;
-            if(art != null){
-                return  (
-                  <tr key={pokemon.id}>
-                    <td>{name}</td>
-                    <td>{weight}</td>
-                  </tr>
-                );
-            }
-          }
-      }
-    }
-
+    function verifyLoadedProps (data) {
+      return typeof data != 'undefined' && Object.keys(data).length !== 0
+    } 
 
   }
- // var listaDePropriedades = Object.values(listar);
-    // listaDePropriedades = listaDePropriedades.filter(function(e){return e});
-    // singleObj = '';
-    // return listaDePropriedades.map(todo => (
-    //   <tr key={todo}>
-    //     <td className='images'>
-    //       <img src={todo} alt="" />
-    //     </td>
-    //     <td>{name}</td>
-    //   </tr>
-    // ));
-
 
   return (
-    <div className=" col-md-12">
-      {renderRows()}
-    </div>
+      <div className="col-md-12">
+        {buscar()}
+      </div>
+    
   )
 }
