@@ -6,7 +6,7 @@ export default props => {
   console.log(props)
   return (
     <div role="from" className="Form form-group">
-      <Grid cols="12 9 10">
+      <Grid cols="12 9 12">
         <div className="search-mode">
           <div className="radio-inline">
             <label>

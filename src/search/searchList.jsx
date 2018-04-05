@@ -61,7 +61,7 @@ export default props => {
                     <li className="list-group-item card-subtitle mb-2 text-muted">Altura: {height}</li>
                   </ul>
                   <div className="card-body">
-                    <a href="#" className="card-link">Mais sobre o {name}</a>       
+                    <a href={"#/pokemon/" + name} className="card-link">Mais sobre o {name}</a>       
                   </div>
                 </div>                
               );        
