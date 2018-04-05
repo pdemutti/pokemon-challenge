@@ -51,6 +51,7 @@ body {
 }
 
 .card img {
+  zoom: 2;
   margin: 0 auto;
   width: 96px;
   display: block;

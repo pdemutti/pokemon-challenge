@@ -83,7 +83,9 @@ export default class Search extends Component {
       }
     })
   }
-
+  verifyLoadedProps (data) {
+    return typeof data != 'undefined' && Object.keys(data).length !== 0
+  } 
   handleSearch () {
     const builtUrl = "https://pokeapi.co/api/v2/" + this.state.selectedOption +"/"+ this.state.description + '/';
     this.setState({...this.state, showLoading: true});

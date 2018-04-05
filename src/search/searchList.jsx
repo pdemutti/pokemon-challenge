@@ -26,7 +26,7 @@ export default props => {
 
       return list.map(item => (
         <li className="list-group-item" key={item.pokemon.name}>
-          <a href="#/">{item.pokemon.name}</a>
+          <a href={"#/pokemon/" + item.pokemon.name}>{item.pokemon.name}</a>
         </li>
       )
       );
@@ -48,9 +48,9 @@ export default props => {
           var name = pokemonObject.name;
           var weight = pokemonObject.weight;
           var height = pokemonObject.height;
-          var image1 = imagesList[0];
+          var image1 = imagesList[3];
               return  (
-                <div className="card col-md-4">
+                <div className="card col-md-12">
                   <img className="card-img-top" data-src={image1} alt="" src={image1} data-holder-rendered="true" />
                   <div className="card-body">
                     <h5 className="card-title">{name}</h5>
