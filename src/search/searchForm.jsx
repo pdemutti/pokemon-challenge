@@ -24,6 +24,7 @@ export default props => {
         <div className="search-box">
           <input
             id="description"
+            autocomplete="off"
             className="form-control"
             placeholder={".:: Search by " + props.selectedOption + " ::."}
             value={props.description}
