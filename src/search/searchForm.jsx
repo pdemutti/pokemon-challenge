@@ -27,14 +27,15 @@ export default props => {
             className="form-control"
             placeholder={".:: Search by " + props.selectedOption + " ::."}
             value={props.description}
+            onKeyPress={props.handleKeyPress}
             onChange={props.handleChange} />
             <IconButton
-            style="info"
+            style="primary"
             icon="search"
             description={props.description}
             onClick={props.handleSearch}>
           </IconButton>
-        </div>        
+        </div>     
       </Grid>     
     </div>
   )

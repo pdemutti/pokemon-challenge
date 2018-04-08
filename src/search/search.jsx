@@ -25,11 +25,16 @@ export default class Search extends Component {
 
     this.handleChange = this.handleChange.bind(this);   
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleChangeSearchMode = this.handleChangeSearchMode.bind(this);
     
   }
-
-
+  handleKeyPress (e) {
+    if(e.key == 'Enter'){
+      console.log('enter press here! ')
+      this.handleSearch();
+    }
+  }
   handleChange (e) {
     this.setState({...this.state, description: e.target.value});
   }
@@ -104,11 +109,11 @@ export default class Search extends Component {
             type={this.state.alertType}
         />
         <SearchForm
-          handleAdd={this.handleAdd}
           description={this.state.description}
           selectedOption={this.state.selectedOption}
           handleChange={this.handleChange}
           handleChangeSearchMode={this.handleChangeSearchMode}
+          handleKeyPress={this.handleKeyPress}
           handleSearch={this.handleSearch}
         />
         <SearchList
