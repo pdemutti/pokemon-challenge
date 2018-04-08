@@ -6,14 +6,21 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
+    "node-sass-chokidar": "^1.2.2",
+    "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "prod": "webpack --progress -p",
-    "start": "node server.js"
+    "start-js": "node server.js",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "prod",
+    "build": "npm-run-all build-css build-js"
   },
   "devDependencies": {
     "axios": "^0.15.3",
