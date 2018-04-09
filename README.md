@@ -8,7 +8,29 @@ Create a page to list all pokemons <br />
 Create a page to list details of selected pokemon
 > **API Documentation:**  [Pokeapi](https://pokeapi.co/)
 
-  
+
+uick install
+-------------
+
+The first thing you should do, is install the Node.js dependencies. To install Node.js dependencies you're going to use npm. In your application folder run this in the **command-line**:
+
+> $ npm install:
+
+## Building project
+
+Before start Pokedex application, we need to build .scss files
+
+To build build-css
+
+    > $ npm run prod
+
+To build css and keep watching for changed files
+
+    > $ npm run watch-css
+
+To build to production
+
+    > $ npm run prod
 
 ## Endpoints Documentation 
 
