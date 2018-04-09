@@ -2,11 +2,25 @@ import React from 'react'
 import Grid from '../template/grid'
 import IconButton from '../template/iconButton'
 
+
 export default props => {
-  console.log(props)
+  const {
+    clickButton,
+    newValue
+  } = this.props;
   return (
     <div role="from" className="Form form-group">
       <Grid cols="12 9 12">
+        <div>
+          <input
+            onChange={props.inputChange}
+            type='text'
+            value={this.state.inputValue}
+            />
+          <button onClick={() => clickButton(this.state.inputValue)}>
+            Click me!
+          </button>
+        </div>
         <div className="search-mode">
           <div className="radio-inline">
             <label>
@@ -40,3 +54,14 @@ export default props => {
     </div>
   )
 }
+
+
+const mapStateToProps = store => ({
+  newValue: store.clickState.newValue
+});
+
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ clickButton }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
