@@ -9,7 +9,7 @@ Create a page to list details of selected pokemon
 > **API Documentation:**  [Pokeapi](https://pokeapi.co/)
 
 
-uick install
+Quick install
 -------------
 
 The first thing you should do, is install the Node.js dependencies. To install Node.js dependencies you're going to use npm. In your application folder run this in the **command-line**:
