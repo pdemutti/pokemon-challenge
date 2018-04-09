@@ -38,7 +38,7 @@ To run in dev mode
 
 ## Endpoints Documentation 
 
-### Search Pokemon endpoint
+### Ability endpoint
 
 > Search pokemon by ability
 
@@ -89,6 +89,7 @@ body:
   
 ```
 
+### Search Pokemon endpoint
 
 > Search pokemon by name or id
 
