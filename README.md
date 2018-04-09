@@ -40,6 +40,56 @@ To run in dev mode
 
 ### Search Pokemon endpoint
 
+> Search pokemon by ability
+
+Endpoint: http://pokeapi.co/api/v2/ability/{ability} <br />
+
+method: GET <br />
+response : 
+body:
+
+```
+
+{
+	"effect_changes": [],
+	"name": "battle-armor",
+	"generation": {
+		"url": "https://pokeapi.co/api/v2/generation/3/",
+		"name": "generation-iii"
+	},
+	"pokemon": [
+		{
+			"slot": 3,
+			"is_hidden": true,
+			"pokemon": {
+				"url": "https://pokeapi.co/api/v2/pokemon/104/",
+				"name": "cubone"
+			}
+		},
+		{
+			"slot": 3,
+			"is_hidden": true,
+			"pokemon": {
+				"url": "https://pokeapi.co/api/v2/pokemon/105/",
+				"name": "marowak"
+			}
+		},
+		{
+			"slot": 2,
+			"is_hidden": false,
+			"pokemon": {
+				"url": "https://pokeapi.co/api/v2/pokemon/140/",
+				"name": "kabuto"
+			}
+		}
+	],
+	"is_main_series": true,
+	{...}
+}
+  
+```
+
+
 > Search pokemon by name or id
 
   
