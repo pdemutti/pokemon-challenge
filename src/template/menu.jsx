@@ -7,7 +7,6 @@ export default props => (
       <div className="navbar-header">
         <a className="navbar-brand" href="#"> 
           <img src={logo} className="App-logo" alt="logo" title="Pokedex" />
-          {/* <span>Pokedex</span> */}
         </a>
       </div>
 
