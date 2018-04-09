@@ -29,6 +29,10 @@ export default class Search extends Component {
     this.handleChangeSearchMode = this.handleChangeSearchMode.bind(this);
     
   }
+   
+  sum (a, b) {
+    return a + b;
+  }
   handleKeyPress (e) {
     if(e.key == 'Enter'){
       console.log('enter press here! ')
