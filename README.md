@@ -23,9 +23,9 @@ The first thing you should do, is install the Node.js dependencies. To install N
 
 Before start Pokedex application, we need to build .scss files
 
-To build build-css
+To build css
 
-    > $ npm run prod
+    > $ npm run build-css
 
 To build css and keep watching for changed files
 
