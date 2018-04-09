@@ -15,8 +15,8 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/template/scss -o  public/testebuild --watch --recursive",
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "prod": "webpack --progress -p",
-    "start-js": "node server.js",
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "node server.js",
+    "start-css": "npm-run-all -p watch-css start",
     "build": "npm-run-all build-css"
   },
   "devDependencies": {
