@@ -1,4 +1,7 @@
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="http://static.pokemonpets.com/images/monsters-images-800-800/94-Gengar.png" alt="Vue logo"></a></p>
+<p align="center">
+    <img width="100" src="http://static.pokemonpets.com/images/monsters-images-800-800/94-Gengar.png" alt="pokemon">
+    <img width="100" src="https://laracasts.com/images/series/circles/do-you-react.png" alt="react logo">
+</p>
 
 # Pokemon Challange
 
