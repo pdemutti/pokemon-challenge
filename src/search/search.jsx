@@ -4,9 +4,7 @@ import SearchForm from './searchForm'
 import SearchList from './searchList'
 import Alert from '../template/alert'
 import Loading from '../template/loading';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { clickButton } from '../actions';
+
 
 export default class Search extends Component {
   constructor (props) {
